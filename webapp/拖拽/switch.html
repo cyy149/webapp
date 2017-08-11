@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="initial-scale=1">
+		<title></title>
+		<style>
+			li{
+				margin:10px 0;
+			}
+			.switch{
+				padding: 0 5px;
+				position: relative;
+				border-radius: 15px;
+				border: 2px solid #ccc;
+				height: 30px;
+				width: 70px;
+				line-height: 30px;
+				display:inline-block;
+			}
+			.ball{
+				left:0;
+				background: #FFF;
+				position: absolute;
+				width: 30px;
+				height: 30px;
+				border-radius: 15px;
+				box-shadow: 1px 1px 1px rgba(0, 0, 0, .5);
+			}
+			.on {
+				text-align: left;
+				background: skyblue;
+			}
+			
+			.on .offTxt {
+				display: none;
+			}
+			
+			.on .ball {
+				left: 50px;
+			}
+			
+			.off {
+				text-align: right;
+			}
+			
+			.off .onTxt {
+				display: none;
+			}
+		</style>
+		
+	</head>
+	<body>
+		<h3>开关</h3>
+		<ul>
+			<li>是否开启wifi：
+				<div class="switch off">
+					<div class="ball"></div>
+					<span class="onTxt">打开</span>
+					<span class="offTxt">关闭</span>
+				</div>
+			</li>
+			<li>是否开启定位：
+				<div class="switch on">
+					<div class="ball"></div>
+					<span class="onTxt">打开</span>
+					<span class="offTxt">关闭</span>
+				</div>
+			</li>
+		</ul>
+		<script>
+			function Aopen(){
+				return window.confirm("你确定要打开吗？");
+			}
+			function Bclose(){
+				return window.confirm("你确定要关闭吗？");
+			}
+			function Switch(dom,callbacks){
+			//定义两个属性用来获取用户传入的两个函数
+				this.onFunc  = callbacks.on ? callbacks.on : null;
+				this.offFunc = callbacks.off ? callbacks.off : null;
+				this.container = dom;
+				this.initStatus = "off";
+				this.status = "off";
+				this.ball = dom.querySelector(".ball");
+				this.minLeft = 0;
+				this.maxLeft = this.container.offsetWidth - this.ball.offsetWidth;
+				var that = this;
+				this.init();
+				this.bind();
+			}
+
+			Switch.prototype.init = function(){
+			//检查你的类名中，是否有on或者是off
+			//如果有，就做相关的初始化工作
+				var className = this.container.getAttribute("class");
+				if(/\bon\b/.test(className)){
+					this.on();
+				}
+				else if(/\boff\b/.test(className)){
+					this.off();
+				}
+			}
+
+			Switch.prototype.on = function(){
+				//改变自己的状态
+				this.status = "on";
+				//设置小球的位置
+				this.ball.style.left = this.maxLeft + "px";
+				//把自己的类从off改成on
+				//获取class
+				var oldClass = this.container.getAttribute("class");
+				var newClass = oldClass.replace(/\boff\b/,"on");
+				//重新设置class
+				this.container.setAttribute("class",newClass);
+			}
+
+			Switch.prototype.off = function(){
+				//改变自己的状态
+				this.status = "off";
+				//设置小球的位置
+				this.ball.style.left = this.minLeft + "px";
+				//把自己的类从off改成on
+				//获取class
+				var oldClass = this.container.getAttribute("class");
+				var newClass = oldClass.replace(/\bon\b/,"off");
+				//重新设置class
+				this.container.setAttribute("class",newClass);
+			}
+
+			Switch.prototype.bind = function(){
+				var info = {left:0,top:0,x:0,y:0};
+				var that = this;
+				that.container.addEventListener("touchstart",function(e){
+					//点击外层容器，切换状态
+					that.change();
+				});
+				this.ball.addEventListener("touchstart",function(e){
+					this.style["transition"]="";
+					info.left = this.offsetLeft;
+					info.top  = this.offsetTop;
+					info.x = e.targetTouches[0].pageX - that.container.offsetLeft;
+					info.y = e.targetTouches[0].pageY - that.container.offsetTop;
+					console.info(info);
+					e.stopPropagation();
+				});
+				this.ball.addEventListener("touchmove",function(e){
+				//newX - e.x = info.left - info.x
+					var newX = info.left - info.x + (e.targetTouches[0].pageX - that.container.offsetLeft);
+					var newY = info.top - info.y + (e.targetTouches[0].pageY - that.container.offsetTop);
+					newX = newX > that.maxLeft ? that.maxLeft : newX;
+					newX = newX < that.minLeft ? that.minLeft : newX;
+					this.style.left = newX + "px";
+					});
+				this.ball.addEventListener("touchend",function(e){
+					this.style["transition"]="left .5s";
+					//小球中心点
+					var t = this.offsetLeft + this.offsetWidth/2;
+					//是否超过容器宽度的一半
+					if(t>that.container.offsetWidth/2){
+					//并且当前状态是off
+						if(that.initStatus == "off"){
+					//状态变为了on
+							if(typeof that.onFunc == "function"){
+								if(that.onFunc()){
+								//变成on的状态
+								that.on();
+								that.initStatus = "on";
+								}else{
+									that.off();
+								}
+								return;
+							}	
+						}
+						that.on();
+						that.initStatus = "on";
+					}else{
+						if(that.initStatus == "on"){
+					//状态变化了变成了on
+							if(typeof that.offFunc == "function" && that.offFunc()){
+							//变成off状态
+							that.off();
+							that.initStatus = "off";
+							}else{
+								that.off();
+							}
+							return;
+						}
+						that.off();
+						that.initStatus = "off";
+					}
+				});
+			}
+
+			Switch.prototype.change = function(){
+				this.ball.style["transition"]="left .5s";
+				if( this.status == "off"){
+					this.on();
+				}else{
+					this.off();
+				}
+			}
+
+			var switches = document.querySelectorAll(".switch");
+			// var s1 = new Switch(switches[0],{on:Aopen});
+			for (var i = 0; i < switches.length; i++) {
+				new Switch(switches[i],{on:Aopen,off:Bclose});
+			};
+		</script>
+	</body>
+</html>

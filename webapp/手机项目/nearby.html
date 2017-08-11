@@ -1,0 +1,251 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="css/mui.min.css" rel="stylesheet" />
+		
+		<style type="text/css">
+			.mui-content ul{
+				padding-left:0;
+			}
+			.mui-content img{
+				width: 100%;
+			}
+			
+			#topPopover {
+				position: fixed;
+				top: 16px;
+				right: 6px;
+			}
+			#topPopover .mui-popover-arrow {
+				left: auto;
+				right: 6px;
+			}
+			
+			p {
+				text-indent: 22px;
+			}
+			span.mui-icon {
+				font-size: 14px;
+				color: #007aff;
+				margin-left: -15px;
+				padding-right: 10px;
+			}
+			.mui-popover {
+				height: 200px;
+				/*overflow: hidden;*/
+			}
+			.mui-content {
+				padding: 10px;
+			}
+			
+		</style>
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+		    <a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+		    <h1 class="mui-title">附近</h1>
+		     <a class="mui-icon mui-icon-pengyouquan mui-pull-right" href="#topPopover"></a>
+		</header>
+		
+		<div id="topPopover" class="mui-popover">
+			<div class="mui-popover-arrow"></div>
+			<div class="mui-scroll-wrapper">
+				<div class="mui-scroll">
+					<ul class="mui-table-view">
+						<li class="mui-table-view-cell">
+							<a href="#">人人</a>
+						</li>
+						<li class="mui-table-view-cell"><a href="#">QQ</a>
+						</li>
+						<li class="mui-table-view-cell"><a href="#">微信</a>
+						</li>
+						<li class="mui-table-view-cell"><a href="#">微博</a>
+
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		
+		<div id="pullrefresh" class="mui-content mui-scroll-wrapper">
+			
+			<!--下拉刷新容器-->
+			<div class="mui-scroll">
+				
+				<ul>
+				<li class="mui-card">
+				   
+					<!--页眉，放置标题-->
+					<div class="mui-card-header">
+						<img src="./images/logo.png" />
+						<div class="mui-media-body">
+							小M
+							<p>发表于 2016-06-30 15:30</p>
+						</div>
+						
+					</div>
+					<!--内容区-->
+					<div class="mui-card-content">
+						<img src="./images/1.jpg" alt="" />
+					</div>
+					<!--页脚，放置补充信息或支持的操作-->
+					<div class="mui-card-footer">页脚1</div>
+	
+				</li>
+				
+				<li class="mui-card">
+					<!--页眉，放置标题-->
+					<div class="mui-card-header">
+						<img src="./images/logo.png" />
+						<div class="mui-media-body">
+							小M
+							<p>发表于 2016-06-30 15:30</p>
+						</div>
+						
+					</div>
+					<!--内容区-->
+					<div class="mui-card-content">
+						<img src="./images/1.jpg" alt="" />
+					</div>
+					<!--页脚，放置补充信息或支持的操作-->
+					<div class="mui-card-footer">页脚2</div>
+	
+				</li>
+				
+				<li class="mui-card">
+				   
+					<!--页眉，放置标题-->
+					<div class="mui-card-header">
+						<img src="./images/logo.png" />
+						<div class="mui-media-body">
+							小M
+							<p>发表于 2016-06-30 15:30</p>
+						</div>
+						
+					</div>
+					<!--内容区-->
+					<div class="mui-card-content">
+						<img src="./images/1.jpg" alt="" />
+					</div>
+					<!--页脚，放置补充信息或支持的操作-->
+					<div class="mui-card-footer">页脚2</div>
+	
+				</li>
+			</ul>
+		
+			</div>
+		</div>
+		
+		<nav class="mui-bar mui-bar-tab">
+	    <a id="index" class="mui-tab-item mui-active" href="index.html">
+	        <span class="mui-icon mui-icon-home"></span>
+	        <span class="mui-tab-label">首页</span>
+	    </a>
+	    <a id ="nearby" class="mui-tab-item" href="nearby.html">
+	        <span class="mui-icon mui-icon-map"></span>
+	        <span class="mui-tab-label">附近</span>
+	    </a>
+	    <a id="hangout"class="mui-tab-item" href="hangout.html">
+	        <span class="mui-icon mui-icon-spinner mui-spin"></span>
+	        <span class="mui-tab-label">晃一晃</span>
+	    </a>
+	    <a id="order" class="mui-tab-item" href="orders.html">
+	        <span class="mui-icon mui-icon-list"></span>
+	        <span class="mui-tab-label">订单</span>
+	    </a>
+	    <a id="settings"class="mui-tab-item" href="settings.html">
+	    	
+	        <span class="mui-icon mui-icon-contact"></span>
+	        <span class="mui-tab-label">我的</span>
+	    </a>
+	</nav>
+	
+	<script type="text/javascript" charset="utf-8">
+		
+		document.getElementById("nearby").addEventListener("tap",function(){
+			var href =this.getAttribute("href");
+			window.location.href =href;
+		})
+		document.getElementById("index").addEventListener("tap",function(){
+			var href =this.getAttribute("href");
+			window.location.href =href;
+		})
+		document.getElementById("order").addEventListener("tap",function(){
+			var href =this.getAttribute("href");
+			window.location.href =href;
+		})
+		document.getElementById("hangout").addEventListener("tap",function(){
+			var href =this.getAttribute("href");
+			window.location.href =href;
+		})
+		document.getElementById("settings").addEventListener("tap",function(){
+			var href =this.getAttribute("href");
+			window.location.href =href;
+		})
+	</script>
+		
+		<script src="js/mui.min.js"></script>
+		<script type="text/javascript">
+		
+			
+			mui.init({
+				pullRefresh: {
+					container: '#pullrefresh',
+//					down: {
+//						contentrefresh: '正在加载1...',
+//						callback: pulldownRefresh
+//					},
+					up: {
+						contentrefresh: '正在加载2...',
+						callback: pullupRefresh
+					}
+				}
+			});
+			
+//			function pulldownRefresh(){
+//				console.info("pulldownRefresh");
+//				
+//				mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
+//			}
+			function pullupRefresh(){
+				console.info("pullupRefresh");
+				
+				//连接数据库，去取数据  json格式 。
+				
+				var str = '<div class="mui-card-header"><img src="./images/logo.png" /><div class="mui-media-body">$title$<p>发表于 $date$</p></div></div><div class="mui-card-content"><img src="$src$" alt="" /></div><div class="mui-card-footer">$info$</div>';
+				
+				var json = {
+					"title" : "小明",
+					"date"  : "2016-06-30 15:30",
+					"src"   : "./images/2.jpg",
+					"info"  : Date.now()
+ 				}
+				
+				str = str.replace("$title$",json.title);
+				str = str.replace("$date$",json.date);
+				str = str.replace("$src$",json.src);
+				str = str.replace("$info$",json.info);
+				
+				console.info(str);
+				
+				var li  =document.createElement("li");
+				li.className = "mui-card";
+				li.innerHTML = str;
+				
+				document.getElementById("pullrefresh").getElementsByTagName("ul")[0].appendChild(li);
+				
+				mui('#pullrefresh').pullRefresh().endPullupToRefresh(); //refresh completed
+				
+				
+			}
+		</script>
+		
+		
+	</body>
+
+</html>

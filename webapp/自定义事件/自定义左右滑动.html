@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>自定义左右滑动</title>
+	<style>
+		#div{
+			line-height: 300px;
+			background: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div id="div">
+		<p>你可以左右上下滑动试试</p>
+	</div>
+	<script>
+	 	var div = document.getElementById("div");
+	 	var start = {x:0,y:0},  //七点
+	 		end   = {x:0,y:0};  //终点
+	 	div.addEventListener("touchstart",function(e){
+	 		start.x = e.targetTouches[0].pageX;
+	 		start.y = e.targetTouches[0].pageY;
+	 		console.info(start);
+	 	});
+	 	div.addEventListener("touchend",function(e){
+	 		end.x = e.changedTouches[0].pageX;
+	 		end.y = e.changedTouches[0].pageY;
+	 		console.info(e,end);
+	 		if( Math.abs(end.x-start.x)>Math.abs(end.y-start.y) ){
+	 		//表示水平滑动
+	 			if(end.x-start.x >30){
+	 			//滑动距离超过30，现在准备派发slideRight事件
+	 				var evt =document.createEvent("CustomEvent");
+	 				evt.initCustomEvent("slideRight",true,true,{d:end.x-start.x});
+	 				div.dispatchEvent(evt);
+	 			}else if(end.x-start.x<-30){
+	 			//滑动超过30，现在准备派发slideLeft事件
+	 				var evt = document.createEvent("CustomEvent");
+	 				evt.initCustomEvent("slideLeft",true,true,{});
+	 				div.dispatchEvent(evt);
+	 			}
+	 		}else{
+	 		//表示垂直方向
+	 			if(end.y-start.y >30){
+	 			//滑动距离超过30，现在准备派发slideDown事件
+	 				var evt =document.createEvent("CustomEvent");
+	 				evt.initCustomEvent("slideDown",true,true,{d:end.y-start.y});
+	 				div.dispatchEvent(evt);
+	 			}else if(end.y-start.y<-30){
+	 			//滑动超过30，现在准备派发slideUp事件
+	 				var evt = document.createEvent("CustomEvent");
+	 				evt.initCustomEvent("slideUp",true,true,{});
+	 				div.dispatchEvent(evt);
+	 			}
+	 		}
+
+	 	});
+	 	div.addEventListener("slideLeft",function(e){
+	 		alert("左滑一下");
+	 	});
+	 	div.addEventListener("slideRight",function(e){
+	 		alert("右滑一下");
+	 	});
+	 	div.addEventListener("slideDown",function(e){
+	 		alert("下滑一下");
+	 	});
+	 	div.addEventListener("slideUp",function(e){
+	 		alert("上滑一下");
+	 	});
+	</script>
+</body>
+</html>

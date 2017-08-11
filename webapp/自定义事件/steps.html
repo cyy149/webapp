@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>动画</title>
+	<style>
+		#girl{
+			width: 79px;
+			height: 108px;
+			background: url('img/aisidier.png') no-repeat;
+			animation: move 1s steps(7) infinite;
+		}
+		#girl2{
+			width: 79px;
+			height: 108px;
+			background: url('img/aisidier.png') 0 -108px no-repeat;
+			animation: move 1s steps(7) infinite;
+		}
+		@keyframes move{
+			from{
+				background-position-x: 0;
+				}
+			to{
+				background-position-x: -553px;
+				}
+		}
+	</style>
+</head>
+<body>
+	<div id="girl"></div>
+	<div id="girl2"></div>
+</body>
+</html>

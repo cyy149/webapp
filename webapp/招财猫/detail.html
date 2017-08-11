@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<!--<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />-->
+		<meta charset="utf-8" />
+		<title></title>
+		<script src="js/flexible.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/flexible_css.js" type="text/javascript" charset="utf-8"></script>
+		
+		<link rel="stylesheet" type="text/css" href="css/detail.css"/>
+	</head>
+	<body>
+		<header class="flex flex-sb">
+			<a class="back" href="index.html">主页</a>
+			<span>计划2467号1期</span>
+			<span id="menu_btn" class="menu_btn"></span>
+		</header>
+
+		<section class="data">
+			<p class="data1"><em>9.2%+0.5%</em></p>
+			<p>9.7% (9.2%+活动加息0.5%)</p>
+		</section>
+		
+		<ul class="txt flex" >
+			<li>1000起投</li>
+			<li>期限180天</li>
+		</ul>
+		
+		<section class="tips">
+			<table>
+				<tr><td>省级律所法律支持</td><td>省级律所法律支持</td></tr>
+				<tr><td>省级律所法律支持</td><td>省级律所法律支持</td></tr>
+			</table>
+		</section>
+		
+		<div id="pro_bg" class="pro_bg" data-bfb="50">
+			<div id="pro_director" class="director" style="left:0;">
+				37%
+			</div>
+			<div id ="pro_front" class="pro_front" style="width:0;"></div>
+		</div>
+		<div class="tz">
+			<p class="flex flex-sb">
+				<span>已投资<em>37</em>人</span>
+				<span>剩余可投<em>600000</em>元</span>
+			</p>
+			
+			<a href="">查看项目详情</a>
+		</div>
+		
+		<footer class="flex">
+			<a href="">收益估算</a><button>立即投资</button>
+		</footer>
+		
+		<div id="mask" class="mask" style="display: none;">
+			<nav class='nav flex'>
+				<a href=""><img src="img/ico_menu_1.png" alt="" /><span>&nbsp;首页&nbsp;</span></a>
+				<a href=""><img src="img/ico_menu_2.png" alt="" /><span>关于我们</span></a>
+				<a href=""><img src="img/ico_menu_3.png" alt="" /><span>新手指引</span></a>
+				<a href=""><img src="img/ico_menu_4.png" alt="" /><span>帮助中心</span></a>
+			</nav>
+			
+		</div>
+		
+		<script src="js/zepto/zepto.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			$(function(){
+				$("html").css("font-size",document.documentElement.clientWidth/750 * 75 +"px");
+
+				//我们要根据当前的百分比，确定两个值：
+				// 内部指示条的 ： width 
+				// 上面的指针的 : left
+				console.info(  $("#pro_bg").data("bfb") );
+				var bfb = $("#pro_bg").data("bfb");
+				//获取整个的宽度
+				var W = $("#pro_bg").width();
+				
+				//算 width
+				var w = Math.ceil( W * bfb / 100 );
+				//设置宽度
+				$("#pro_front").width(w);
+				
+				//设置left
+				var l = w - $("#pro_director").width()/2;
+				$("#pro_director").css("left",l);
+				
+				console.info(W,w);
+				
+			
+				document.getElementById("menu_btn").addEventListener("touchstart",function(){
+					
+					$("#mask").toggle();
+				})
+			
+			
+			});
+			
+			
+			
+		</script>
+		
+				
+		
+	</body>
+</html>

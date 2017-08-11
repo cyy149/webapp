@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<meta charset="utf-8" />
+		<title></title>
+
+		<link rel="stylesheet" type="text/css" href="css/index.css"/>
+	</head>
+	<body>
+		<header class="flex flex-sb">
+			<a href=""><h1>招财猫</h1> </a>
+			<div><a href="">注册</a> | <a href="">登陆</a></div>
+		</header>
+
+		<section class="userLinks flex">
+			<a class="current" href="">&nbsp;首页&nbsp;</a>
+			<a href="">我要投资</a>
+			<a href="">帐户中心</a>
+		</section>
+
+		<div id='mySwipe' class='swipe'>
+		  <div class='swipe-wrap'>
+		    <div><img src="img/banner20170225.jpg" alt=""></div>
+		    <div><img src="img/home_regbanner.png" alt=""></div>
+		  </div>
+		  <ul>
+		    <li></li>
+		    <li></li>
+		  </ul>
+		</div>
+
+
+		<nav class='nav flex'>
+			<a href=""><img src="img/home_ico_01.png" alt="" /><span>安全保障</span></a>
+			<a href=""><img src="img/home_ico_02.png" alt="" /><span>关于我们</span></a>
+			<a href=""><img src="img/home_ico_03.png" alt="" /><span>新手指引</span></a>
+			<a href="help.html"><img src="img/home_ico_04.png" alt="" /><span>帮助中心</span></a>
+		</nav>
+
+		<section class="title flex flex-sb">
+			<h3>热门产品</h3><a href="">更多</a>
+		</section>
+
+		<section class="products">
+			<div class="product">
+				<a href="">
+					<h4>
+						计划24671期
+						<i class="fr"><span>返现金</span><em></em></i>
+					</h4>
+					<ul class="flex">
+						<li>
+							<em>9.2%</em>+0.5%
+						</li>
+						<li>
+							<p><em>180</em>&nbsp;天</p>
+							<p>投资期限</p>
+						</li>
+						<li class="data" data-pr="37">
+							<!--37%-->
+							 <canvas class="loader"></canvas>
+						</li>
+					</ul>
+				</a>
+			</div>
+
+			<div class="product">
+				<a href="">
+					<h4>
+						计划24672期
+						<i class="fr"><span>返现金</span><em></em></i>
+					</h4>
+					<ul class="flex">
+						<li>
+							<em>8.1%</em>+0.1%
+						</li>
+						<li>
+							<p><em>160</em>&nbsp;天</p>
+							<p>投资期限</p>
+						</li>
+						<li class="data" data-pr = "56">
+							<!--37%-->
+							 <canvas class="loader"></canvas>
+						</li>
+					</ul>
+				</a>
+			</div>
+
+
+			<div class="product">
+				<a href="">
+					<h4>
+						计划24673期
+						<i class="fr"><span>返现金</span><em></em></i>
+					</h4>
+					<ul class="flex">
+						<li>
+							<em>8.9%</em>+0.1%
+						</li>
+						<li>
+							<p><em>160</em>&nbsp;天</p>
+							<p>投资期限</p>
+						</li>
+						<li class="data" data-pr = "96">
+							<!--37%-->
+							 <canvas class="loader"></canvas>
+						</li>
+					</ul>
+				</a>
+			</div>
+
+		</section>
+
+
+		<section class="title qiye flex">
+			<h3>企业动态</h3>
+		</section>
+
+		<ul class="news">
+			<li>
+				<a href="" class="flex">
+					<img src="img/news20170310144045_植树节专享标题.jpg" alt="" />
+					<div>
+						<h4>春日梦想 植树</h4>
+						<p><i class="fr">2017-03-30</i> 来源：</p>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="" class="flex">
+					<img src="img/news20170310144045_植树节专享标题.jpg" alt="" />
+					<div>
+						<h4>春日梦想 植树</h4>
+						<p><i class="fr">2017-03-30</i> 来源：</p>
+					</div>
+				</a>
+			</li>
+			<li>
+				<a href="" class="flex">
+					<img src="img/news20170310144045_植树节专享标题.jpg" alt="" />
+					<div>
+						<h4>春日梦想 植树</h4>
+						<p><i class="fr">2017-03-30</i> 来源：</p>
+					</div>
+				</a>
+			</li>
+		</ul>
+
+
+		<footer>
+			<p class="footerlink">
+				<a href="">触屏版</a>
+				<a href="">电脑版</a>
+				<a href="">APP下载</a>
+			</p>
+			<p class="copyright">
+				&copy;2017招财猫理财
+			</p>
+		</footer>
+
+
+		<script src="js/zepto/zepto.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/swipe.js" type="text/javascript" charset="utf-8"></script>
+		<script src="js/jquery.classyloader.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+
+			$(function(){
+
+//				document.addEventListener("touchstart",function(e){
+//					e.preventDefault();
+//				})
+
+				$("html").css("font-size",document.documentElement.clientWidth/750 * 75 +"px");
+
+
+
+				var h =  document.documentElement.clientWidth/750 * 136;
+				var fs = document.documentElement.clientWidth/750 * 38 + "px";
+
+				$(".data").each(function(index,el){
+					console.info(index,el);
+
+					var per = $(el).data("pr") ;
+
+					$(el).find("canvas").ClassyLoader({
+					 	width: h,
+	            		height: h,// 200
+		                percentage: per, /*你的数值 */
+		                speed: 20,
+		                fontSize: fs,
+		                diameter: 0.4*h,//80,
+		                lineColor: '#FA3012',
+		                remainingLineColor: '#FFE2E0',
+		                lineWidth: h/20,
+		                fontColor:"#FB4034"
+		           });
+				});
+			})
+
+			var elem = document.getElementById('mySwipe');
+			window.mySwipe = Swipe(elem, {
+			  startSlide: 0,/*开始是第几页*/
+        speed:1000,/*前滚速度*/
+			  auto: 1500,   /*自动播放的时间间隔*/
+			  continuous: true,//
+			  // disableScroll: true,
+			  // stopPropagation: true,
+			  callback: function(index, element) {
+			    //把第index个li变亮
+			    //把全部的变暗
+			    $("li").removeClass("current");
+			    $("li").eq(index % 2).addClass("current");
+			    //把当前的变亮
+			   // console.info(index,element);
+			  }
+			  // transitionEnd: function(index, element) {}
+			});
+		</script>
+
+	</body>
+</html>

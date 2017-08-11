@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+	<title>自定义左右滑动</title>
+	<style>
+		.div{
+			line-height: 300px;
+			background: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div id="div" class="div">
+		<p>你可以左右上下滑动试试</p>
+	</div>
+	<hr>
+	<div class="div">
+		<p>你可以左右上下滑动试试</p>
+	</div>
+	<script>
+	function EnableSlide(dom,callBackEvent={}){
+		// callBackEvent = callBackEvent ? callBackEvent : {} ;
+
+		//哪个元素派发了一个什么样的事件
+		function trigger(dom,eventName){
+			var evt = document.createEvent("CustomEvent");
+			evt.initCustomEvent(eventName,true,true,{});
+			dom.dispatchEvent(evt);
+		}
+	 	
+	 	var start = {x:0,y:0},  //起点
+	 		end   = {x:0,y:0};  //终点
+	 	dom.addEventListener("touchstart",function(e){
+	 		start.x = e.targetTouches[0].pageX;
+	 		start.y = e.targetTouches[0].pageY;
+	 		console.info(start);
+	 	});
+	 	dom.addEventListener("touchend",function(e){
+	 		end.x = e.changedTouches[0].pageX;
+	 		end.y = e.changedTouches[0].pageY;
+	 		console.info(e,end);
+	 		if( Math.abs(end.x-start.x)>30 || Math.abs(end.y-start.y)>30 ){//是否超过30
+	 			var dir = "";
+	 			if( Math.abs(end.x-start.x) > Math.abs(end.y-start.y) ){
+	 				//表示水平
+	 				dir = end.x > start.x ? "slideRight" : "slideLeft";
+	 			}else{
+	 				dir = end.y > start.y ? "slideDown" : "slideUp";
+	 			}
+	 			trigger(this,dir);
+	 		}
+	 	});
+
+	 	if(callBackEvent.left && typeof callBackEvent.left == "function"){
+	 		dom.addEventListener("slideLeft",function(){
+	 			callBackEvent.left();
+	 		});
+	 	}
+	 	if(callBackEvent.right && typeof callBackEvent.right == "function"){
+	 		dom.addEventListener("slideRight",function(){
+	 			callBackEvent.right();
+	 		});
+	 	}
+	 	if(callBackEvent.up && typeof callBackEvent.left == "function"){
+	 		dom.addEventListener("slideUp",function(){
+	 			callBackEvent.up();
+	 		});
+	 	}
+	 	if(callBackEvent.down && typeof callBackEvent.down == "function"){
+	 		dom.addEventListener("slideDown",function(){
+	 			callBackEvent.down();
+	 		});
+	 	}
+	}
+	 	
+	var div = document.getElementById("div");
+
+	//dom元素添加滑动事件
+	EnableSlide(div,
+			{
+				left:function(){
+					alert("left"+Date.now());
+				},
+				right:function(){
+					alert("right"+Date.now());
+				},
+				down:function(){
+					alert("down"+Date.now());
+				},
+				up:function(){
+					alert("up"+Date.now());
+				},
+			});
+	// document.addEventListener("touchstart",function(e){
+	//  		e.preventDefault();
+	//  	})
+	</script>
+</body>
+</html>

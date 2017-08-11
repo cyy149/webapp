@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<!-- <meta name="viewport" content="width=device-width"> -->
+	<!-- <meta name="viewport" content="initial-scale=0.5"> -->
+	<meta name="viewport" content="initial-scale=1">
+
+
+	<title>Document</title>
+	<style>
+		body{margin:0;}
+		div{
+			width: 200px;
+			height: 200px;
+			margin:10px 0;
+			background: #ccc;
+			-webkit-border-radius: 50%;
+			-moz-border-radius: 50%;
+			border-radius: 50%;
+			/*background-image:radial-gradient(100px 100px,red 85%,blue);*/
+			animation:change 3s cubic-bezier(0.18, 0.59, 0.7, 0.29) 0s infinite;
+		}
+		p{
+			padding:50px auto;
+		}
+		@keyframes change{
+			from{
+				background-image:radial-gradient(100px 100px,red 85%,blue);
+			}
+			to{
+				background-image:radial-gradient(100px 100px,blue 85%,red);	
+			}
+		}
+	</style>
+</head>
+<body>
+	<div id="div" style="width:200px">
+		<p>手指放在元素上，你自己觉得过了一秒钟就松开</p>
+		<p id="result"></p>
+	</div>
+
+	<script>
+		//手指放在元素上，你自己觉得过了一秒钟就松开。
+		//如果你放上和离开 这两个间隔的时间 与1秒的间隔 不超50ms，则认为你是比较准确的
+		//
+		//在放上时，计下时间 t1,
+		//在离开时，计下时间 t2
+		//比较t2 - t1 和50之间的关系 
+	
+		var t1 ;
+		var t2 ; 
+		document.getElementById('div').addEventListener("touchstart",function (e)
+		{
+			t1 = Date.now();
+		});
+
+	
+		document.getElementById('div').addEventListener("touchend",function (e)
+		{
+			t2 = Date.now();
+
+			document.getElementById("result").innerHTML = (t2 - t1)/1000 +"秒"; 
+			console.info(t2 - t1 - 1000);
+			if(Math.abs( t2 - t1 - 1000 ) < 50){
+				alert("你真棒！")
+			}
+		});
+//		var timer1;
+//		var oDiv = document.getElementById('div');
+//		timer1 = setInterval(function(){
+//			oDiv.style.backgroundImage="radial-gradient(100px 100px,red 35%,blue)";
+//		},1500);
+////			clearInterval(timer1);
+//		
+//		timer2 = setInterval(function(){
+//			oDiv.style.backgroundImage="radial-gradient(100px 100px,red 85%,blue)";
+//		},3000);
+//		
+//		document.getElementById('div').addEventListener("load",function (e){
+//			timer1();
+//			timer2();
+//		});
+	</script>
+
+
+</body>
+</html>

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<title>Hello MUI</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1,user-scalable=no">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black">
+
+		<!--标准mui.css-->
+		<link rel="stylesheet" href="./css/mui.min.css">
+		<!--App自定义的css-->
+		<!--<link rel="stylesheet" type="text/css" href="./css/app.css" />-->
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<h1 class="mui-title">订单</h1>
+		</header>
+		<div class="mui-content">
+			<h5 class="mui-content-padded" style="margin: 35px 10px 15px 10px;">拖拽(滑动)显示功能按钮，点击按钮触发事件</h5>
+			<ul id="OA_task_1" class="mui-table-view">
+				<li class="mui-table-view-cell">
+					<div class="mui-slider-right mui-disabled">
+						<a class="mui-btn mui-btn-red">删除</a>
+					</div>
+					<div class="mui-slider-handle">
+						订单1
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="mui-slider-right mui-disabled">
+						<a class="mui-btn mui-btn-red">删除</a>
+					</div>
+					<div class="mui-slider-handle">
+						订单2
+					</div>
+				</li>
+				<li class="mui-table-view-cell">
+					<div class="mui-slider-right mui-disabled">
+						<a class="mui-btn mui-btn-red">删除</a>
+					</div>
+					<div class="mui-slider-handle">
+						订单3
+					</div>
+				</li>
+			</ul>
+		</div>
+		
+		<nav class="mui-bar mui-bar-tab">
+	    <a id="index" class="mui-tab-item mui-active" href="index.html">
+	        <span class="mui-icon mui-icon-home"></span>
+	        <span class="mui-tab-label">首页</span>
+	    </a>
+	    <a id ="nearby" class="mui-tab-item" href="nearby.html">
+	        <span class="mui-icon mui-icon-map"></span>
+	        <span class="mui-tab-label">附近</span>
+	    </a>
+	    <a id="hangout"class="mui-tab-item" href="hangout.html">
+	        <span class="mui-icon mui-icon-spinner mui-spin"></span>
+	        <span class="mui-tab-label">晃一晃</span>
+	    </a>
+	    <a id="order" class="mui-tab-item" href="orders.html">
+	        <span class="mui-icon mui-icon-list"></span>
+	        <span class="mui-tab-label">订单</span>
+	    </a>
+	    <a id="settings"class="mui-tab-item" href="settings.html">
+	    	
+	        <span class="mui-icon mui-icon-contact"></span>
+	        <span class="mui-tab-label">我的</span>
+	    </a>
+	</nav>
+	
+	<script type="text/javascript" charset="utf-8">
+		
+		document.getElementById("nearby").addEventListener("tap",function(){
+			var href =this.getAttribute("href");
+			window.location.href =href;
+		})
+		document.getElementById("index").addEventListener("tap",function(){
+			var href =this.getAttribute("href");
+			window.location.href =href;
+		})
+		document.getElementById("order").addEventListener("tap",function(){
+			var href =this.getAttribute("href");
+			window.location.href =href;
+		})
+		document.getElementById("hangout").addEventListener("tap",function(){
+			var href =this.getAttribute("href");
+			window.location.href =href;
+		})
+		document.getElementById("settings").addEventListener("tap",function(){
+			var href =this.getAttribute("href");
+			window.location.href =href;
+		})
+	</script>
+	
+		<script src="./js/mui.min.js"></script>
+		<script>
+			mui.init();
+			(function($) {
+				var btnArray = ['确认', '取消'];
+				//$.swipeoutOpen(el,direction)//打开指定列的滑动菜单，el:指定列的dom对象，direction：取值left|right，指定打开的是左侧或右侧滑动菜单
+				//$.swipeoutClose(el);//关闭指定列的滑动菜单，el:指定列的dom对象
+				//				setTimeout(function() {
+				//					$.swipeoutOpen(document.getElementById("OA_task_1").querySelector('li:last-child'), 'left');
+				//					setTimeout(function() {
+				//						$.swipeoutClose(document.getElementById("OA_task_1").querySelector('li:last-child'));
+				//					}, 1000);
+				//				}, 1000);
+				//第一个demo，拖拽后显示操作图标，点击操作图标删除元素；
+				$('#OA_task_1').on('tap', '.mui-btn', function(event) {
+					var elem = this;
+					var li = elem.parentNode.parentNode;
+					mui.confirm('确认删除该条记录？', 'myApp', btnArray, function(e) {
+						if (e.index == 0) {
+							li.parentNode.removeChild(li);
+						} else {
+							setTimeout(function() {
+								$.swipeoutClose(li);
+							}, 0);
+						}
+					});
+				});
+				
+				
+			})(mui);
+		</script>
+	</body>
+
+</html>

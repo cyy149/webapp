@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=0, user-scalable=0, maximum-scale=1, minimum-scale=1">
+	<title>Document</title>
+	<style>
+		div{
+			position:absolute;
+			width: 200px;
+			height: 200px;
+			background: #434;
+		}
+	</style>
+</head>
+<body>
+	<h3>这是可以拖动的元素</h3>
+	<div>
+		拖动我试试
+	</div>
+	<script>
+	var topLeftPoint = {x:0,y:0},
+		p = {x0:0,y0:0};
+	var div = document.querySelector("div");
+	var maxX = document.documentElement.clientWidth - div.offsetWidth;
+	div.addEventListener("touchstart",function(e){
+		topLeftPoint.x = this.offsetLeft;
+		topLeftPoint.y = this.offsetTop;
+
+		p.x0 = e.targetTouches[0].pageX;
+		p.y0 = e.targetTouches[0].pageY;
+		console.info(p,topLeftPoint,maxX);
+	});
+	div.addEventListener("touchmove",function(e){
+		var newX = topLeftPoint.x -p.x0 + e.targetTouches[0].pageX;
+		var newY = topLeftPoint.y -p.y0 + e.targetTouches[0].pageY;
+
+		newX = newX > maxX ? maxX : newX;
+		newX = newX < 0    ? 0    : newX;
+		newY = newY < 0    ? 0    : newY;
+		this.style.left = newX + "px";
+		this.style.top  = newY + "px";
+	});
+	</script>
+</body>
+</html>

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+    <title></title>
+    <script src="js/mui.min.js"></script>
+    <link href="css/mui.min.css" rel="stylesheet"/>
+    
+    <style type="text/css">
+    	.color1{
+    		background: #ccc;
+    	}
+    	.mui-card-content img{
+    		width: 100%;
+    	}
+    </style>
+    <script type="text/javascript" charset="utf-8">
+      	mui.init();
+      	
+      
+      	
+    	
+    </script>
+</head>
+<body>
+	<header class="mui-bar mui-bar-nav">
+	    <a  href="location.html" class="mui-icon mui-icon-location mui-pull-left"></a>
+	    <h1 class="mui-title">标题</h1>
+	</header>
+	
+	<div class="mui-content">
+		<div id="slider" class="mui-slider" >
+			<div class="mui-slider-group mui-slider-loop">
+				<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+				<div class="mui-slider-item mui-slider-item-duplicate">
+					<a href="#">
+						<img src="images/5.jpg">
+					</a>
+				</div>
+				<!-- 第一张 -->
+				<div class="mui-slider-item">
+					<a href="#">
+						<img src="images/1.jpg">
+					</a>
+				</div>
+				<!-- 第二张 -->
+				<div class="mui-slider-item">
+					<a href="#">
+						<img src="images/2.jpg">
+					</a>
+				</div>
+				<!-- 第三张 -->
+				<div class="mui-slider-item">
+					<a href="#">
+						<img src="images/3.jpg">
+					</a>
+				</div>
+				<!-- 第四张 -->
+				<div class="mui-slider-item">
+					<a href="#">
+						<img src="images/4.jpg">
+					</a>
+				</div>
+				
+				<!-- 第五张 -->
+				<div class="mui-slider-item">
+					<a href="#">
+						<img src="images/5.jpg">
+					</a>
+				</div>
+				<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+				<div class="mui-slider-item mui-slider-item-duplicate">
+					<a href="#">
+						<img src="images/1.jpg">
+					</a>
+				</div>
+			</div>
+			<div class="mui-slider-indicator">
+				<div class="mui-indicator mui-active"></div>
+				<div class="mui-indicator"></div>
+				<div class="mui-indicator"></div>
+				<div class="mui-indicator"></div>
+				<div class="mui-indicator"></div>
+			</div>
+		</div>
+		
+		<ul class="mui-table-view mui-grid-view mui-grid-9">
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+		                    <span class="mui-icon mui-icon-home"></span>
+		                    <div class="mui-media-body">Home</div></a></li>
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+		                    <span class="mui-icon mui-icon-email"><span class="mui-badge">5</span></span>
+		                    <div class="mui-media-body">Email</div></a></li>
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+		                    <span class="mui-icon mui-icon-chatbubble"></span>
+		                    <div class="mui-media-body">Chat</div></a></li>
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+		                    <span class="mui-icon mui-icon-location"></span>
+		                    <div class="mui-media-body">location</div></a></li>
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+		                    <span class="mui-icon mui-icon-search"></span>
+		                    <div class="mui-media-body">Search</div></a></li>
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+		                    <span class="mui-icon mui-icon-phone"></span>
+		                    <div class="mui-media-body">Phone</div></a></li>
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+		                    <span class="mui-icon mui-icon-gear"></span>
+		                    <div class="mui-media-body">Setting</div></a></li>
+		            <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+		                    <span class="mui-icon mui-icon-info"></span>
+		                    <div class="mui-media-body">about</div></a></li>
+		           <li class="mui-table-view-cell mui-media mui-col-xs-4 mui-col-sm-3"><a href="#">
+		                    <span class="mui-icon mui-icon-more"></span>
+		                    <div class="mui-media-body">more</div></a></li>
+		        </ul> 
+		
+		<a href="nearby.html">nearBY</a>
+	</div>
+
+	<nav class="mui-bar mui-bar-tab">
+	    <a id="index" class="mui-tab-item mui-active" href="index.html">
+	        <span class="mui-icon mui-icon-home"></span>
+	        <span class="mui-tab-label">首页</span>
+	    </a>
+	    <a id ="nearby" class="mui-tab-item" href="nearby.html">
+	        <span class="mui-icon mui-icon-map"></span>
+	        <span class="mui-tab-label">附近</span>
+	    </a>
+	    <a id="hangout"class="mui-tab-item" href="hangout.html">
+	        <span class="mui-icon mui-icon-spinner mui-spin"></span>
+	        <span class="mui-tab-label">晃一晃</span>
+	    </a>
+	    <a id="order" class="mui-tab-item" href="orders.html">
+	        <span class="mui-icon mui-icon-list"></span>
+	        <span class="mui-tab-label">订单</span>
+	    </a>
+	    <a id="settings"class="mui-tab-item" href="settings.html">
+	    	
+	        <span class="mui-icon mui-icon-contact"></span>
+	        <span class="mui-tab-label">我的</span>
+	    </a>
+	</nav>
+	
+	<script type="text/javascript" charset="utf-8">
+		
+		document.getElementById("nearby").addEventListener("tap",function(){
+			var href =this.getAttribute("href");
+			window.location.href =href;
+		})
+		document.getElementById("index").addEventListener("tap",function(){
+			var href =this.getAttribute("href");
+			window.location.href =href;
+		})
+		document.getElementById("order").addEventListener("tap",function(){
+			var href =this.getAttribute("href");
+			window.location.href =href;
+		})
+		document.getElementById("hangout").addEventListener("tap",function(){
+			var href =this.getAttribute("href");
+			window.location.href =href;
+		})
+		document.getElementById("settings").addEventListener("tap",function(){
+			var href =this.getAttribute("href");
+			window.location.href =href;
+		})
+	</script>
+	
+</body>
+</html>

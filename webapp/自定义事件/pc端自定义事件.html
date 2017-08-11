@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>pc端自定义事件</title>
+	<style>
+		#div{
+			height: 300px;
+			background: #ccc;
+		}
+	</style>
+</head>
+<body>
+	<div id="div">
+		<p>在这里直接点击：click</p>
+		<p>alt和shift同时去点击。我们认为要派发一个AClick</p>
+	</div>
+	<script>
+		var div = document.getElementById("div");
+		div.addEventListener("click",function(e){
+			console.info("div.click");
+			if(e.altKey == true && e.shiftKey == true){
+			//表示ctrl和alt键被同时按下
+			//此时，向外派发一个自定义事件
+			//第一步：创建一个事件对象
+			var evt = document.createEvent("CustomEvent");
+			console.info(evt);
+			//第二步：初始化这个事件对象
+			evt.initCustomEvent("AClick",false,true,{});
+			//第三步：让某个dom元素去派发这个事件对象
+			div.dispatchEvent(evt);
+			}
+		});
+
+		//让dom元素监听这个事件
+		div.addEventListener("AClick",function(){
+			console.info("AClick");
+		});
+		document.body.addEventListener("click",function(){
+			console.info("这是冒泡上来的body.click");
+		});
+		document.body.addEventListener("AClick",function(){
+			console.info("这是自己定义事件冒泡上来，设置第二个true能看到我");
+		});
+	</script>
+</body>
+</html>

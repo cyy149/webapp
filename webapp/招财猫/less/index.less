@@ -1,0 +1,189 @@
+@import "reset";
+
+/*头部的样式*/
+body{background-color: #f9f9f9;}
+header{
+    .h(94);
+    background-color: #FA3432;
+    .fs(30);
+    .padding(0,20,0,20);
+ 
+    color:#fff;
+    h1{
+        .fs(30);
+        .h(49);
+        .line-height(49);
+        .pl(57);
+        background: url(../img/logo_1.png) no-repeat left center;
+        .background-size(47 ,49);
+        }
+        
+    a{color:#fff;} 
+}
+
+.userLinks{
+    .h(86);
+    .fs(24);
+    background-color: #fff;
+    a{
+        color:#4b4a4a;
+        flex: 1 1 auto;
+        text-align: center;
+        &.current{
+            color:#ff3636;
+        }
+    }
+    
+}
+
+.swipe {
+      overflow: hidden;
+      visibility: hidden;
+      position: relative;
+    
+    .swipe-wrap {
+      overflow: hidden;
+      position: relative;
+    }
+    .swipe-wrap > div {
+      float:left;
+      width:100%;
+      position: relative;
+    }
+    img{
+      width: 100%;
+    }
+    ul{
+        position: absolute;
+        .bottom(20);
+        left:(50%);
+        transform:translateX(-50%);
+        }
+    ul>li{display: inline-block;
+        .w(20);
+        .h(20);
+        background-color: #C73030;
+        .border-radius(10);
+        &.current{
+            background-color: #fff;
+        }
+    }
+}
+
+.nav{ //导航按钮
+    
+    .h(200);
+    a{
+        text-align: center;
+        color:#808080;
+        flex:1 1 auto;
+    }
+    img{
+        .w(90);display: block;
+        margin:0 auto;
+        .margin-bottom(9);
+    
+    }
+    background-color:#fff;
+    .fs(24);
+    border-bottom:1px solid #e9e9e8;
+}
+.title{//产品的标题
+    .h(95);
+    color:#49848;
+    .fs(30);
+    .padding(0,23,0,23);
+    h3{
+        background:url(../img/home_ico_09.png) no-repeat left center;
+        .background-size(45,45);
+        .padding(0,0,0,50);
+        }
+    a{
+        color:#9a9b9c;
+    }
+}
+
+.products{//产品
+    .padding(0,23,0,23);
+    .product{
+        .margin(0,0,25,0);
+        border:1px solid #e9e9e8;
+        .padding(25,25,25,25);
+        .h(255);
+        h4{
+            color:#494848;
+            .fs(28);
+            i{.fs(12);}
+            span{
+                .h(30);
+                .w(85);
+                background-color: #ffab37;
+                color:#fff;
+                display: inline-block;
+                vertical-align: middle;
+                .margin(0,4,0,0);
+                text-align: center;
+            }
+            em{
+                background:url(../img/reward_icon_3.png) no-repeat center center;
+                .padding(2,2,2,2);
+                .background-size(30,27);
+                .w(33);.h(30);display: inline-block;
+                background-color: #ff7404;
+                vertical-align: middle;
+            }
+        }
+        ul{.margin(28,0,0,0);}
+        li:nth-child(1){
+            color:#FF7900;
+            .fs(24);
+            .margin(0,87,0,43);
+            em{color:#FB4034;.fs(38)}
+        
+        }
+        li:nth-child(2){
+            color:#9a9b9c;
+            .margin(0,56,0,0);
+            .fs(30);
+            em{color:#3d3c3c;}
+        }
+        
+    }
+}
+
+.news{
+    border-top:1px solid #ccc;
+    .padding(35,23,0,23);
+    background-color: #fff;
+    li{.margin(0,0,35,0)}
+    a{
+        img{flex: 0 0 auto; .h(110);.w(110);
+            .margin(0,23,0,0);
+        }
+        div{
+            flex:1 1 auto; 
+            .fs(28);
+            color:#9a9b9c;
+        }
+        h4{
+            color:#494848;
+            .margin(9,0,20,0);
+        }
+    }
+}
+
+footer{
+    border-top:1px solid #ccc;
+    background-color: #fff;
+    .h(165);
+    .margin(23,0,0,0);
+    .padding(45,0,0,0);
+    text-align: center;
+    .footerlink{
+        .margin(0,0,20,0);
+        .fs(28);
+        a{color:#494848;}
+        
+    }
+    .copyright{.fs(26);color:#9A9B9C;}
+}
